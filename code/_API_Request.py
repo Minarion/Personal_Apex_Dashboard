@@ -1,4 +1,5 @@
 # Inbuilt
+import json
 import requests
 from typing import Optional
 
@@ -13,7 +14,7 @@ def get_api_data(
     api_key: str,
     platform: str,
     user_name: Optional[None | str] = None,
-    user_id: Optional[None | str] = None,
+    user_id: Optional[None | int] = None,
     api_url: str = "https://api.apexlegendsstatus.com",
     optionals: list = [],
 ) -> dict:
@@ -82,7 +83,16 @@ output = get_api_data(
     api_key=keys.api_key,
     platform=request_info.platform,
     user_name=request_info.user_name,
+    user_id=request_info.user_id,
     optionals=request_info.optionals,
 )
 
-print(output)
+with open("test.txt", "w") as file:
+    file.write(
+        json.dumps(
+            json.loads(
+                output["text"]
+            ), 
+            indent=4
+        )
+    )

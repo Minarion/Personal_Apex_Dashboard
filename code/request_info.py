@@ -1,4 +1,5 @@
 request_type = "bridge"
-platform = "PS4"
-user_name = "Minarion"
-optionals = ["status_code"]
+platform = ""
+user_name = None
+user_id = None
+optionals = ["text"]
